@@ -1,0 +1,63 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+.env/
+.venv/
+ENV/
+env/
+env.bak/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# VSCode config
+.vscode/
+
+# macOS metadata
+.DS_Store
+
+# Pytest
+.cache/
+.pytest_cache/
+
+# MyPy / Pylint / coverage
+.mypy_cache/
+.coverage
+coverage.xml
+*.cover
+htmlcov/
+reports/
+
+# Build / packaging
+build/
+dist/
+*.egg-info/
+*.eggs/
+
+# Logs
+*.log
+
+# Env vars and secrets (if you store them this way)
+.env
+.env.*
+
+# PyInstaller
+*.spec
+
+# SQLite DB or other temp data
+*.db
+*.sqlite3
+
+# __init__.py backup files
+*__init__.py~
+
+# Jupyter runtime (if using notebooks)
+~/.local/share/jupyter/runtime/
+
+# Test results
+nosetests.xml
+test-results/
