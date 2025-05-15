@@ -50,4 +50,3 @@ class Movie(BaseModel):
     genres: List[str] # List of genres
     mood_tags: List[str] = [] # List of mood tags
     audience_rating: float = Field(..., ge=0, le=10) # Audience rating (0 to 10)
-    showtimes: List[str] 
