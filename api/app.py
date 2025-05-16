@@ -7,7 +7,7 @@ import config
 
 app = Flask(__name__)
 
-@app.route("/api/recommend", methods=["POST"])
+@app.route("/recommend", methods=["POST"])
 def recommend():
     try:
         #Validate the request data
@@ -26,10 +26,11 @@ def recommend():
         # Fromat the response
         response = {
             "recommendations": [{
+                "movie_id": rec["movie"].id,
                 "title": rec["movie"].title,
                 "genres": rec["movie"].genres,
                 "affinity": rec["affinity"],
-                "why": f"Coincide con {group_data.mood} y gustos del grupo",  # Simplified explanation
+                "why": f"Coincide con {group_data.mood} y gustos del grupo",  # Simplified explanation, Gemini will be used for more detailed explanations
             } for rec in recommendations]
         }
         

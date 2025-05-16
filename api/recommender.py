@@ -11,11 +11,11 @@ class MovieRecommender:
         self.movies = movies
         # Adjusted weights for the new moods
         self.weights = {
-            'genres': 0.4,
-            'emotions': 0.3,
-            'mood': 0.15,
+            'genres': 0.5,
+            'emotions': 0.1,
+            'mood': 0.2,
             'text': 0.1,
-            'context': 0.05
+            'context': 0.1
         }
 
     def _get_group_genre_weights(self) -> Dict[str, float]:

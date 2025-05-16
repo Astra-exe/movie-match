@@ -39,7 +39,7 @@ class GroupRequest(BaseModel):
     
     name: str = Field(..., min_length=1) # Name of the group (minimum 1 character)
     size: int = Field(..., gt=0) # Size of the group (greater than 0)
-    context: str = Field(..., pattern="^(solo|pareja|amigos|familia)$") # Context of the group (solo, pareja, amigos, familia)
+    context: str = Field(..., pattern="^(Solo|Pareja|Amigos|Familia)$") # Context of the group (solo, pareja, amigos, familia)
     mood: str = Field(..., pattern="^(Modo fan|Explorador|Buscando emociones fuertes|Relajado|Modo cita|Solo quiero reírme|Curioso por algo distinto|Modo nostálgico|Buscando profundidad)$") # Mood of the group (various options)
     people: List[Person] = Field(..., min_length=1)
     free_text: Optional[str] = None
