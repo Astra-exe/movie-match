@@ -6,14 +6,14 @@ class Person(BaseModel):
         json_schema_extra={ #Example of how the JSON schema will look like (for documentation purposes)
             "example": {
                 "name": "Ana",  
-                "fav_genres": ["acción"],
+                "genre": "Acción",
                 "emojis": ["🔥"]
             }
         }
     )
     
     name: str = Field(..., min_length=1) # Name of the person (minimum 1 character)
-    fav_genres: List[str] = Field(..., min_length=1) # At least one favorite genre
+    genre: str = Field(..., min_length=1) # Name of the genre (minimum 1 character)
     emojis: List[str] = Field(..., min_length=1, max_length=2) # At least one emoji, maximum two
 
     @field_validator("emojis")
@@ -32,7 +32,7 @@ class GroupRequest(BaseModel):
                 "context": "amigos",
                 "mood": "modo fan",
                 "people": [],
-                "free_text": "Queremos algo emocionante"
+                "comments": "Queremos algo emocionante"
             }
         }
     )
@@ -42,7 +42,7 @@ class GroupRequest(BaseModel):
     context: str = Field(..., pattern="^(Solo|Pareja|Amigos|Familia)$") # Context of the group (solo, pareja, amigos, familia)
     mood: str = Field(..., pattern="^(Modo fan|Explorador|Buscando emociones fuertes|Relajado|Modo cita|Solo quiero reírme|Curioso por algo distinto|Modo nostálgico|Buscando profundidad)$") # Mood of the group (various options)
     people: List[Person] = Field(..., min_length=1)
-    free_text: Optional[str] = None
+    comments: Optional[str] = None
 
 class Movie(BaseModel):
     id: str # Unique identifier for the movie
@@ -50,3 +50,4 @@ class Movie(BaseModel):
     genres: List[str] # List of genres
     mood_tags: List[str] = [] # List of mood tags
     audience_rating: float = Field(..., ge=0, le=10) # Audience rating (0 to 10)
+    gemini_explanation: Optional[str] = None # Explanation from Gemini (optional)

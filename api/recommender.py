@@ -20,7 +20,7 @@ class MovieRecommender:
 
     def _get_group_genre_weights(self) -> Dict[str, float]:
         # Calculate genre weights based on the group's favorite genres
-        all_genres = [g for person in self.group_data.people for g in person.fav_genres]
+        all_genres = [g for person in self.group_data.people for g in person.genre]
         total = len(all_genres)
         return {genre: count/total for genre, count in Counter(all_genres).items()}
 
@@ -63,7 +63,7 @@ class MovieRecommender:
 
     def _calculate_text_affinity(self, movie: Movie) -> float:
         # Affinity based on the free text provided by the group
-        group_keywords = extract_mood_tags(self.group_data.free_text)
+        group_keywords = extract_mood_tags(self.group_data.comments)
         common = len(set(group_keywords) & set(movie.mood_tags))
         return common / len(group_keywords) if group_keywords else 0.0
 
