@@ -13,8 +13,15 @@ class Person(BaseModel):
     )
     
     name: str = Field(..., min_length=1) # Name of the person (minimum 1 character)
-    genre: str = Field(..., min_length=1) # Name of the genre (minimum 1 character)
+    genre: List[str] = Field(..., min_length=1) # Name of the genre (minimum 1 character)
     emojis: List[str] = Field(..., min_length=1, max_length=2) # At least one emoji, maximum two
+
+    @field_validator("genre", mode="before")
+    @classmethod
+    def ensure_genre_list(cls, v):
+        if isinstance(v, str):
+            return [v]
+        return v
 
     @field_validator("emojis")
     @classmethod
@@ -39,8 +46,8 @@ class GroupRequest(BaseModel):
     
     name: str = Field(..., min_length=1) # Name of the group (minimum 1 character)
     size: int = Field(..., gt=0) # Size of the group (greater than 0)
-    context: str = Field(..., pattern="^(Solo|Pareja|Amigos|Familia)$") # Context of the group (solo, pareja, amigos, familia)
-    mood: str = Field(..., pattern="^(Modo fan|Explorador|Buscando emociones fuertes|Relajado|Modo cita|Solo quiero reírme|Curioso por algo distinto|Modo nostálgico|Buscando profundidad)$") # Mood of the group (various options)
+    context: str = Field(..., pattern="^(solo|pareja|amigos|familia)$") # Context of the group (solo, pareja, amigos, familia)
+    mood: str = Field(..., pattern="^(modo fan|explorador|buscando emociones fuertes|relajado|modo cita|quiero reírme|curioso por algo distinto|modo nostálgico|buscando profundidad)$") # Mood of the group (various options)
     people: List[Person] = Field(..., min_length=1)
     comments: Optional[str] = None
 

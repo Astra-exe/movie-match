@@ -29,8 +29,8 @@ def recommend():
                 "movie_id": rec["movie"].id,
                 "title": rec["movie"].title,
                 "genres": rec["movie"].genres,
-                "affinity": rec["affinity"],
-                "why": f"Coincide con {group_data.mood} y gustos del grupo",  # Simplified explanation, Gemini will be used for more detailed explanations
+                "affinity": rec["affinity"],  # Affinity score
+                "why": rec["movie"].gemini_explanation,  # Gemini explanation
             } for rec in recommendations]
         }
         

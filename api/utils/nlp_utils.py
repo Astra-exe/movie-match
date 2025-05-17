@@ -2,9 +2,15 @@ from collections import defaultdict
 import spacy
 import emoji
 from typing import List, Dict
+import google.generativeai as genai
+import config
 
 # load the Spanish NLP model
 nlp = spacy.load("es_core_news_md")
+
+# Load the Gemini model
+genai.configure(api_key=config.GEMINI_API_KEY)
+gemini = genai.GenerativeModel('gemini-2.0-flash')
 
 # Manual mapping of emojis to features in Spanish
 EMOJI_TO_FEATURES = {
@@ -100,3 +106,30 @@ def extract_mood_tags(text: str) -> List[str]:
         for token in doc
         if token.pos_ in ["NOUN", "ADJ"] and len(token.text) > 4
     ][:11]
+
+def generate_gemini_explanation(group_data, movie, affinity_score: float, is_top:bool) -> str:
+    prompt = f"""
+    Eres un experto en recomendación de películas. Genera una explicación clara y amigable en español latino (máximo 7 frases) de por qué la película {movie.title} 
+    es buena para el grupo que busca **{group_data.mood}**. 
+
+    Contexto:
+    - Géneros favoritos del grupo: {', '.join([g for p in group_data.people for g in p.genre])}
+    - Emojis del grupo: {', '.join([e for p in group_data.people for e in p.emojis])}
+    - Texto libre del grupo: "{group_data.comments}" (Si no hay, omite este punto)
+    - Porcentaje de afinidad: {affinity_score*100:.1f}%
+
+    La película:
+    - Géneros: {', '.join(movie.genres)}
+    - Rating: {movie.audience_rating}/10
+    - Mood tags: {', '.join(movie.mood_tags)}
+
+    Instrucciones:
+    {"¡Destacar como la mejor recomendación usando 2 emojis relevantes!" if is_top else "1. Presentar como buena alternativa con 1 emoji"}
+    1. Usa emojis relevantes.
+    2. Destaca 1-2 características clave.
+    3. Sé entusiasta queremos que vayan al cine.
+    4. Explica cómo se relaciona con el mood del grupo.
+        """
+    
+    response = gemini.generate_content(prompt)
+    return response.text
