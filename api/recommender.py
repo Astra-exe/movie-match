@@ -11,11 +11,11 @@ class MovieRecommender:
         self.group_data = group_data
         self.movies = movies
         self.weights = {
-            'genres': 0.8,
+            'genres': 0.7,
             'emotions': 0.05,
-            'mood': 0.05,
+            'mood': 0.1,
             'text': 0.05,
-            'context': 0.05
+            'context': 0.1
         }
 
     def _get_group_genre_weights(self) -> Dict[str, float]:
@@ -97,8 +97,8 @@ class MovieRecommender:
         # Adjust weights if needed
         weights = self.weights
         # Debug print
-        print(f"\n{movie.title}:")
-        for k, v in scores.items(): print(f"{k}: {v:.2f}")
+        # print(f"\n{movie.title}:")
+        # for k, v in scores.items(): print(f"{k}: {v:.2f}")
         return float(np.dot(list(scores.values()), list(weights.values())))
 
     def get_recommendations(self, top_n: int = 5) -> List[Dict]:

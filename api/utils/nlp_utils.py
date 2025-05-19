@@ -114,7 +114,7 @@ def generate_gemini_explanation(group_data, movie, affinity_score: float, is_top
 
     Contexto:
     - Géneros favoritos del grupo: {', '.join([g for p in group_data.people for g in p.genre])}
-    - Emojis del grupo: {', '.join([e for p in group_data.people for e in p.emojis])}
+    - Emojis del grupo: {', '.join([e for p in group_data.people for e in p.emojis])} (estos representan la personalidad del grupo)
     - Texto libre del grupo: "{group_data.comments}" (Si no hay, omite este punto)
     - Porcentaje de afinidad: {affinity_score*100:.1f}%
 
@@ -127,7 +127,7 @@ def generate_gemini_explanation(group_data, movie, affinity_score: float, is_top
     {"¡Destacar como la mejor recomendación usando 2 emojis relevantes!" if is_top else "1. Presentar como buena alternativa con 1 emoji"}
     1. Usa emojis relevantes.
     2. Destaca 1-2 características clave.
-    3. Sé entusiasta queremos que vayan al cine.
+    3. Sé entusiasta, queremos que se animen a verla.
     4. Explica cómo se relaciona con el mood del grupo.
         """
     
