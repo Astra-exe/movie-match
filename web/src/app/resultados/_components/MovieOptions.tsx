@@ -24,7 +24,7 @@ import {
 } from "@/components/ui/dialog";
 import CardMovieOption from "./CardMovieOption";
 import CardMovieOptionSkeleton from "./CardMovieOptionSkeleton";
-import "@justinribeiro/lite-youtube";
+import * as LiteYoutube from "@justinribeiro/lite-youtube";
 
 interface MovieOptionsProps {
   movieList: {
