@@ -1,12 +1,12 @@
 <div align="center" id="readme-top">
-  <img src="logo.png" alt="Logo MovieMatch" width="50%">
+  <img src="./web/public/movie-match-logo.png" alt="Logo MovieMatch" width="50%">
 
   <p align="center">
     <b>MovieMatch</b> es una herramienta inteligente potenciada por NLP que te ayuda a elegir la mejor película para ver en el cine, considerando tus gustos, tu compañía y tu estado de ánimo.
     <br />
     <em>“Elegir qué ver ya no será una discusión, será una experiencia compartida.”</em>
-    <a href="https://www.google.com"> Prueba MovieMatch </a>
   </p>
+  <a href="https://www.google.com"> Prueba MovieMatch </a>
 </div>
 
 <!-- TABLE OF CONTENTS -->
@@ -70,7 +70,7 @@ La lógica detrás de las recomendaciones utiliza técnicas de **Procesamiento d
 - Registro/login fluido
 - Gestión de sesiones
 
-Esto permite escalar el proyecto con perfiles personalizados y control de acceso para futuras funciones avanzadas.
+Esto permite escalar el proyecto a futuro con perfiles personalizados y control de acceso para futuras funciones avanzadas.
 
 ---
 
@@ -90,8 +90,8 @@ Esto permite escalar el proyecto con perfiles personalizados y control de acceso
   - [TailwindCSS](https://tailwindcss.com/)
   - [Clerk Auth](https://clerk.com/)
   - [Node.js](https://nodejs.org/)
-- **Base de datos**
-  - [Supabase](https://supabase.io/)
+<!-- - **Base de datos**
+  - [Supabase](https://supabase.io/) -->
 - **Recomendador**
   - [Python](https://www.python.org/) + NLP
   - [Flask](https://flask.palletsprojects.com/)
@@ -165,14 +165,14 @@ py app.py      # o python app.py
 
 ## 🚀 Uso
 
-1. **Ingresa a la plataforma y da click en "Iniciar"**  
-2. **Ingresa las preferencias del grupo**:
+1. **Ingresa a la plataforma y da click en "Comienza ahora".**
+2. **Si aún no has iniciado sesión, hazlo para poder acceder a la herramienta.**  
+3. **Ingresa las preferencias del grupo**:
    - Géneros favoritos
    - Estado de ánimo
    - Personalidad (emojis)
    - etc.
-3. **Recibe una recomendación optimizada** con explicación generada por IA
-4. **Inicia sesión con clerk si quieres guardar tu selección**
+4. **Recibe una recomendación optimizada** con explicación generada por IA
 5. *(Próximamente)* Guarda, comparte y etiqueta tus selecciones
 
 ---
@@ -184,6 +184,22 @@ py app.py      # o python app.py
 *(Se deja este espacio para capturas del flujo, recomendaciones y diseño del frontend)*
 
 ---
+
+## 🎉 Agradecimientos
+
+Este proyecto no sería posible sin:
+
+- **The Movie Database (TMDB)** por su increíble API que nos permite acceder a los datos de películas en tiempo real.  
+  *"Este producto utiliza la API de TMDB pero no está respaldado ni certificado por TMDB"*  
+  📌 [Visitar TMDB](https://www.themoviedb.org/)
+
+- **Midudev** por organizar este increíble hackathon que nos impulsó a crear MovieMatch.  
+  🚀 [Ver otros proyectos del hackathon](https://github.com/midudev/hackaton-clerk-2025/issues)
+
+- **Clerk** por proveer el sistema de autenticación que hace segura nuestra aplicación.  
+  🔐 [Explorar Clerk](https://clerk.com)
+
+*¡Gracias a toda la comunidad de desarrollo por las herramientas open source que hacen proyectos como este posibles!*
 
 ## 👥 Equipo
 
