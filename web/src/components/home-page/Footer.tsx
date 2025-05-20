@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Popcorn } from "lucide-react";
+import Logo from "@/components/Logo";
+import { SignedOut } from "@clerk/nextjs";
 
 export default function Footer() {
   return (
@@ -8,7 +9,7 @@ export default function Footer() {
         <section className="grid gap-10 md:grid-cols-2 lg:grid-cols-3 justify-items-center">
           <div className="space-y-4">
             <div className="flex items-center gap-2 font-bold text-white">
-              <Popcorn className="h-6 w-6" />
+              <Logo className="w-8 h-8" />
               <span className="text-xl">MovieMatcher</span>
             </div>
             <p className="text-sm text-gray-400 max-w-xs">
@@ -37,14 +38,14 @@ export default function Footer() {
                   Generate
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link
                   href="/explore"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
                   Explore
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </div>
 
@@ -75,19 +76,21 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 text-center">
-          <div className="inline-flex items-center justify-center rounded-full bg-gray-900 px-6 py-3 shadow-lg">
-            <p className="text-sm font-medium text-white">
-              Ready to find your next favorite movie?{" "}
-              <Link
-                href="#"
-                className="ml-1 underline text-secondary hover:text-secondary/80"
-              >
-                Login now
-              </Link>
-            </p>
+        <SignedOut>
+          <div className="mt-10 text-center">
+            <div className="inline-flex items-center justify-center rounded-full bg-gray-900 px-6 py-3 shadow-lg">
+              <p className="text-sm font-medium text-white">
+                Ready to find your next favorite movie?{" "}
+                <Link
+                  href="#"
+                  className="ml-1 underline text-secondary hover:text-secondary/80"
+                >
+                  Login now
+                </Link>
+              </p>
+            </div>
           </div>
-        </div>
+        </SignedOut>
       </div>
     </footer>
   );

@@ -1,5 +1,5 @@
 import NavBar from "@/components/home-page/NavBar";
-import { Popcorn } from "lucide-react";
+import Logo from "@/components/Logo";
 
 export default function Header() {
   return (
@@ -7,7 +7,7 @@ export default function Header() {
       <div className="container flex h-14 items-center">
         {/* Logo */}
         <div className="flex items-center gap-2 font-bold">
-          <Popcorn className="h-5 w-5" />
+          <Logo className="w-8 h-8" />
           <strong>MovieMatcher</strong>
         </div>
         {/* Navbar */}

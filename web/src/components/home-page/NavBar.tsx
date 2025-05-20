@@ -18,12 +18,12 @@ export default function NavBar() {
       >
         Generate
       </Link>
-      <Link
+      {/* <Link
         href="/explore"
         className="text-sm font-medium hover:underline underline-offset-4"
       >
         Explore
-      </Link>
+      </Link> */}
       <SignedOut>
         <SignInButton
           mode="modal"

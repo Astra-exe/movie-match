@@ -4,7 +4,6 @@ import Footer from "@/components/home-page/Footer";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
 import Logo from "@/components/Logo";
 
 export default function Home() {
@@ -17,10 +16,12 @@ export default function Home() {
           {/* Cinema Screen */}
           <div className="relative mx-auto mb-16 w-full max-w-4xl overflow-hidden rounded-lg shadow-lg">
             {/* Screen title and description */}
-            <div className="h-60 bg-gradient-to-b from-gray-800 to-gray-900 rounded-t-lg shadow-lg flex items-center justify-center overflow-hidden">
+            <div className="h-48 bg-gradient-to-b from-gray-800 to-gray-900 rounded-t-lg shadow-lg flex items-center justify-center overflow-hidden">
               <div className="absolute top-0 left-0 w-full h-1 bg-gray-700"></div>
               <article className="relative z-10 text-center">
-                <Logo />
+                <span className="inline-block  mb-2">
+                  <Logo className="w-16 h-16" />
+                </span>
                 <h1 className="text-4xl md:text-6xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary mb-2">
                   Movie Matcher
                 </h1>
