@@ -1,22 +1,29 @@
 "use client";
 
 import { useState } from "react";
-import { SignInButton, useUser } from "@clerk/nextjs";
+import { Suspense } from "react";
 
 import Image from "next/image";
-import { Heart, Play, Users, SaveIcon, LogInIcon } from "lucide-react";
+import {
+  Heart,
+  Play,
+  Users,
+  SaveIcon,
+  LogInIcon,
+  Calendar,
+  Tag,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
   Dialog,
   DialogClose,
   DialogContent,
-  DialogDescription,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
 import CardMovieOption from "./CardMovieOption";
-import FormCreateSelectMovie from "./FormCreateSelectMovie";
+import CardMovieOptionSkeleton from "./CardMovieOptionSkeleton";
 import "@justinribeiro/lite-youtube";
 
 interface MovieOptionsProps {
@@ -52,8 +59,6 @@ export default function MovieOptions({
   const [selectedMovieIndex, setSelectedMovieIndex] = useState<number>(0);
   const [showDetails, setShowDetails] = useState<boolean>(true);
 
-  const { isSignedIn, isLoaded } = useUser();
-
   const selectMovie = (indexMovie: number) => {
     setSelectedMovieIndex(indexMovie);
     setShowDetails(true);
@@ -83,23 +88,34 @@ export default function MovieOptions({
     <div>
       {/* Movie Options */}
       <section className="relative max-w-6xl mx-auto mb-8">
-        <div className="flex justify-center overflow-x-auto gap-4 py-4 snap-x snap-mandatory scrollbar-hide">
-          {movieList.map((movie, index) => (
-            <CardMovieOption
-              key={movie.id}
-              movie={movie}
-              isSelected={selectedMovieIndex === index}
-              indexMovie={index}
-              onSelect={selectMovie}
-            />
-          ))}
-        </div>
+        <Suspense
+          fallback={
+            <div className="flex justify-center overflow-x-auto gap-4 py-4 snap-x snap-mandatory scrollbar-hide">
+              {Array.from({ length: 3 }).map((_, i) => (
+                <CardMovieOptionSkeleton key={i} />
+              ))}
+            </div>
+          }
+        >
+          <div className="flex justify-center overflow-x-auto gap-4 py-4 snap-x snap-mandatory scrollbar-hide">
+            {movieList.map((movie, index) => (
+              <CardMovieOption
+                key={movie.id}
+                movie={movie}
+                isSelected={selectedMovieIndex === index}
+                indexMovie={index}
+                onSelect={selectMovie}
+              />
+            ))}
+          </div>
+        </Suspense>
       </section>
 
       {/* Movie Details Pick */}
       {showDetails && (
         <section className="max-w-6xl mx-auto bg-gray-900 rounded-xl p-4 md:p-8 animate-fadeIn">
-          <div className="grid md:grid-cols-[300px_1fr] gap-6">
+          <article className="grid md:grid-cols-[300px_1fr] gap-6">
+            {/* Poster Img */}
             <div className="relative aspect-[2/3] mx-auto md:mx-0 max-w-[300px]">
               <Image
                 src={selectedMovie.posterPath || "/placeholder.svg"}
@@ -109,8 +125,10 @@ export default function MovieOptions({
               />
             </div>
 
+            {/* Movie info */}
             <div className="space-y-4">
-              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
+              {/* Title and affinity */}
+              <div className="flex flex-col-reverse  sm:justify-between sm:items-start gap-2">
                 <h2 className="text-xl sm:text-2xl md:text-3xl font-bold">
                   {selectedMovie.title}
                 </h2>
@@ -127,8 +145,9 @@ export default function MovieOptions({
                 </div>
               </div>
 
+              {/* Movie genres  */}
               <div className="flex flex-wrap gap-2">
-                {selectedMovie.genres.map((genre) => (
+                {selectedMovie.genres.map((genre: string) => (
                   <Badge
                     key={genre}
                     className="bg-accent text-primary-foreground"
@@ -138,27 +157,68 @@ export default function MovieOptions({
                 ))}
               </div>
 
+              {/* Visit Information */}
+              <div className="bg-gray-800/50 rounded-lg p-4 space-y-3 border border-gray-700">
+                <h3 className="text-lg font-semibold flex items-center gap-2">
+                  <Calendar className="w-5 h-5 text-primary" />
+                  Visit Details
+                </h3>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <p className="text-sm text-gray-400">Visit Name</p>
+                    <p className="font-medium">{infoVisit.visit}</p>
+                  </div>
+
+                  <div>
+                    <p className="text-sm text-gray-400">Mood</p>
+                    <div className="flex items-center gap-1.5">
+                      {/* <Smile className="w-4 h-4 text-yellow-400" /> */}
+                      <p className="font-medium">{infoVisit.mood}</p>
+                    </div>
+                  </div>
+
+                  <div className="sm:col-span-2">
+                    <p className="text-sm text-gray-400">Context</p>
+                    <p>{infoVisit.context}</p>
+                  </div>
+
+                  <div className="sm:col-span-2">
+                    <p className="text-sm text-gray-400">Comments</p>
+                    <p className="text-sm">{infoVisit.comments}</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Movie overview */}
               <p className="text-gray-300">{selectedMovie.overview}</p>
 
+              {/* Why to watch - reasons */}
               <div>
                 <h3 className="text-lg font-semibold mb-2">Why Watch It</h3>
                 <p className="text-gray-300">{selectedMovie.why}</p>
               </div>
 
+              {/* People to go */}
               <div>
                 <h3 className="text-lg font-semibold mb-2 flex items-center gap-2">
-                  <Users className="w-5 h-5" />
+                  <Users className="w-4 h-4 sm:w-5 sm:h-5" />
                   People Going ({infoVisit.people.length})
                 </h3>
-                <div className="flex flex-wrap gap-2">
-                  {infoVisit.people.map((person) => (
-                    <Badge
-                      key={person.name}
-                      variant="outline"
-                      className="bg-gray-800 rounded-full"
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  {infoVisit.people.map((attendee) => (
+                    <div
+                      key={attendee.name}
+                      className="flex items-center gap-2 bg-gray-800/60 rounded-lg p-2"
                     >
-                      {person.name}
-                    </Badge>
+                      <Badge variant="outline" className="bg-gray-700">
+                        {attendee.name}
+                      </Badge>
+                      <div className="flex items-center gap-1 text-xs text-gray-300">
+                        <Tag className="w-3 h-3" />
+                        <span>Prefers: {attendee.genre}</span>
+                      </div>
+                    </div>
                   ))}
                 </div>
               </div>
@@ -197,78 +257,9 @@ export default function MovieOptions({
                     </DialogContent>
                   </Dialog>
                 )}
-
-                {!isSignedIn ? (
-                  <SignInButton
-                    mode="modal"
-                    appearance={{
-                      elements: {
-                        formButtonPrimary:
-                          "bg-slate-500 hover:bg-slate-400 text-sm",
-                      },
-                    }}
-                  >
-                    <Button
-                      variant="default"
-                      size="sm"
-                      className="ml-2 cursor-pointer"
-                    >
-                      <LogInIcon className="h-4 w-4 mr-2" />
-                      Logueate para guardar
-                    </Button>
-                  </SignInButton>
-                ) : (
-                  <Dialog>
-                    <DialogTrigger asChild>
-                      <Button className="bg-primary hover:bg-primary/90 cursor-pointer">
-                        <SaveIcon className="w-4 h-4 mr-2" />
-                        Guardar esta opción
-                      </Button>
-                    </DialogTrigger>
-                    <DialogContent className="bg-card text-foreground border border-gray-800 w-auto  md:w-[120vw] mx-auto">
-                      <DialogTitle>Guarda tu selección de pelicula</DialogTitle>
-                      <DialogDescription>
-                        Tu has seleccionado{" "}
-                        <span className="font-semibold">
-                          {selectedMovie.title}
-                        </span>
-                      </DialogDescription>
-                      <div className="space-y-4">
-                        <div className="flex items-center gap-2 mb-4">
-                          <div className="w-16 h-24 relative flex-shrink-0">
-                            <Image
-                              src={
-                                selectedMovie.posterPath || "/placeholder.svg"
-                              }
-                              alt={selectedMovie.title}
-                              fill
-                              className="object-cover rounded-md"
-                            />
-                          </div>
-                          <div>
-                            <p className="font-medium">{selectedMovie.title}</p>
-                            <div className="flex items-center gap-1 mt-1">
-                              <Heart className="w-4 h-4 fill-red-500 text-red-500" />
-                              <span className="text-sm">
-                                {selectedMovie.affinity}% Score Affinity
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div className="space-y-2">
-                          <FormCreateSelectMovie
-                            infoVisit={infoVisit}
-                            moviePick={selectedMovie}
-                          />
-                        </div>
-                      </div>
-                    </DialogContent>
-                  </Dialog>
-                )}
               </div>
             </div>
-          </div>
+          </article>
         </section>
       )}
     </div>
