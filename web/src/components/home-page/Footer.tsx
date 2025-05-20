@@ -1,6 +1,7 @@
 import Link from "next/link";
-import Logo from "@/components/Logo";
-import { SignedOut } from "@clerk/nextjs";
+import Logo from "@/components/icons/Logo";
+import { SignedOut, SignInButton } from "@clerk/nextjs";
+import Github from "../icons/Github";
 
 export default function Footer() {
   return (
@@ -19,8 +20,10 @@ export default function Footer() {
             </p>
           </div>
 
-          <div className="space-y-4">
-            <h3 className="text-lg font-medium text-white">Enlaces rápidos</h3>
+          <div className="text-center sm:text-left space-y-4">
+            <h3 className="sm:text-lg font-medium text-white">
+              Enlaces rápidos
+            </h3>
             <ul className="space-y-2">
               <li>
                 <Link
@@ -49,14 +52,16 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div className="space-y-4">
-            <h3 className="text-lg font-medium text-white">Comunidad</h3>
-            <Link
-              href="#"
+          <div className="text-center sm:text-left space-y-4">
+            <h3 className="sm:text-lg font-medium text-white">Comunidad</h3>
+            <a
+              href="https://github.com/Astra-exe/movie-match"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-gray-400 hover:text-white transition-colors"
             >
               Contribuye en GitHub
-            </Link>
+            </a>
           </div>
         </section>
 
@@ -66,12 +71,14 @@ export default function Footer() {
               © 2025 MovieMatch. Todos los derechos reservados.
             </p>
             <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-500">
-              <Link
-                href="https://github.com"
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://github.com/Astra-exe/movie-match"
                 className="hover:text-white transition-colors"
               >
-                Github
-              </Link>
+                <Github className="w-6 h-6" />
+              </a>
             </div>
           </div>
         </div>
@@ -81,12 +88,11 @@ export default function Footer() {
             <div className="inline-flex items-center justify-center rounded-full bg-gray-900 px-6 py-3 shadow-lg">
               <p className="text-sm font-medium text-white">
                 ¿Listo para encontrar tu próxima película favorita?{" "}
-                <Link
-                  href="#"
-                  className="ml-1 underline text-secondary hover:text-secondary/80"
-                >
-                  Ingresa ahora
-                </Link>
+                <SignInButton mode="modal">
+                  <span className="ml-1 underline text-secondary hover:text-secondary/80 cursor-pointer">
+                    Ingresa ahora
+                  </span>
+                </SignInButton>
               </p>
             </div>
           </div>

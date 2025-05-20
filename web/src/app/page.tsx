@@ -4,7 +4,7 @@ import Footer from "@/components/home-page/Footer";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
-import Logo from "@/components/Logo";
+import Logo from "@/components/icons/Logo";
 
 export default function Home() {
   return (
@@ -20,7 +20,7 @@ export default function Home() {
               <div className="absolute top-0 left-0 w-full h-1 bg-gray-700"></div>
               <article className="relative z-10 text-center">
                 <span className="inline-block  mb-2">
-                  <Logo className="w-16 h-16" />
+                  <Logo className="w-12 h-12 sm:w-16 sm:h-16" />
                 </span>
                 <h1 className="text-4xl md:text-6xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary mb-2">
                   Movie Match
@@ -178,7 +178,9 @@ export default function Home() {
               <strong className="text-primary">para</strong> ti
             </h2>
             <p className="mt-4 text-lg text-gray-400">
-              Dinos lo que te gusta y nosotros encontraremos las películas perfectas para ti. No más scroll sin fin en los servicios de streaming.
+              Dinos lo que te gusta y nosotros encontraremos las películas
+              perfectas para ti. No más scroll sin fin en los servicios de
+              streaming.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <Button
@@ -190,14 +192,14 @@ export default function Home() {
                   Comienza ahora <ChevronRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
-              <Button
+              {/* <Button
                 asChild
                 size="lg"
                 variant="link"
                 className="cursor-pointer border-primary border-2 hover:bg-primary hover:text-background"
               >
                 <Link href="/explore">Explorar selecciones</Link>
-              </Button>
+              </Button> */}
             </div>
           </article>
         </section>
