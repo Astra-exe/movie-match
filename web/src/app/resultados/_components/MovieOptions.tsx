@@ -24,7 +24,7 @@ import {
 } from "@/components/ui/dialog";
 import CardMovieOption from "./CardMovieOption";
 import CardMovieOptionSkeleton from "./CardMovieOptionSkeleton";
-import * as LiteYoutube from "@justinribeiro/lite-youtube";
+// import * as LiteYoutube from "@justinribeiro/lite-youtube";
 
 interface MovieOptionsProps {
   movieList: {
@@ -225,7 +225,7 @@ export default function MovieOptions({
                   ))}
                 </div>
               </div>
-
+              {/*
               <div className="mt-5 flex gap-x-5 items-center">
                 {selectedMovie.youtubeVideoKey && (
                   <Dialog>
@@ -254,13 +254,12 @@ export default function MovieOptions({
                         </svg>
                       </DialogClose>
                       <div className="">
-                        {/* @ts-expect-error: Custom element not recognized by TS */}
-                        <lite-youtube videoid={selectedMovie.youtubeVideoKey} />
+                        <LiteYoutube videoid={selectedMovie.youtubeVideoKey} />
                       </div>
                     </DialogContent>
                   </Dialog>
                 )}
-              </div>
+              </div> */}
             </div>
           </article>
         </section>
