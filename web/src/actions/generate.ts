@@ -5,7 +5,7 @@ import { cookies } from "next/headers";
 import type { SelectionData } from "@/lib/data/schema";
 
 // TODO: delete this mock data
-// import { generateOpts } from "@/lib/data/mocks";
+import { generateOpts } from "@/lib/data/mocks";
 
 interface RecommendationGenerated {
   affinity: number;
@@ -54,20 +54,20 @@ export async function submitFormSelectMovie(
       comments,
     };
 
-    // return {
-    //   success: true,
-    //   data: {
-    //     ...generateOpts,
-    //     info: {
-    //       visit: name,
-    //       context: context ?? "",
-    //       mood: mood ?? "",
-    //       comments: comments ?? "",
-    //       people: people ?? [],
-    //     },
-    //   },
-    //   message: "Your movie options has been successfully selected!",
-    // };
+    return {
+      success: true,
+      data: {
+        ...generateOpts,
+        info: {
+          visit: name,
+          context: context ?? "",
+          mood: mood ?? "",
+          comments: comments ?? "",
+          people: people ?? [],
+        },
+      },
+      message: "Your movie options has been successfully selected!",
+    };
 
     const response = await fetch(URL_API_ANALIZE, {
       method: "POST",
