@@ -8,7 +8,7 @@ export default function GeneratePage() {
       <Header />
       <div className="bg-background text-foreground pt-8 pb-32">
         <header className="w-[90%] mx-auto">
-          <div className="py-8 md:py-14 lg:py-20 text-center max-w-2xl mx-auto space-y-3">
+          <div className="py-8 md:py-14 lg:py-20 text-center max-w-2xl mx-auto space-y-2">
             <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary">
               Genera tu selección de películas
             </h1>
