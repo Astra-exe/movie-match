@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { SignInButton, useUser } from "@clerk/nextjs";
 
 import Image from "next/image";
 import {
@@ -10,6 +11,7 @@ import {
   Play,
   Users,
   SaveIcon,
+  LogInIcon,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -59,6 +61,8 @@ export default function MovieOptions({
 }: MovieOptionsProps) {
   const [selectedMovieIndex, setSelectedMovieIndex] = useState<number>(0);
   const [showDetails, setShowDetails] = useState<boolean>(true);
+
+  const { isSignedIn, isLoaded } = useUser();
 
   const selectMovie = (indexMovie: number) => {
     setSelectedMovieIndex(indexMovie);
@@ -174,7 +178,7 @@ export default function MovieOptions({
                   <DialogTrigger asChild>
                     <Button className="bg-input text-foreground hover:bg-secondary cursor-pointer">
                       <Play className="w-4 h-4 mr-2" />
-                      Watch Trailer
+                      Ver Trailer
                     </Button>
                   </DialogTrigger>
                   <DialogContent>
@@ -202,51 +206,74 @@ export default function MovieOptions({
                   </DialogContent>
                 </Dialog>
 
-                <Dialog>
-                  <DialogTrigger asChild>
-                    <Button className="bg-primary hover:bg-primary/90 cursor-pointer">
-                      <SaveIcon className="w-4 h-4 mr-2" />
-                      Guardar esta opción
+                {!isSignedIn ? (
+                  <SignInButton
+                    mode="modal"
+                    appearance={{
+                      elements: {
+                        formButtonPrimary:
+                          "bg-slate-500 hover:bg-slate-400 text-sm",
+                      },
+                    }}
+                  >
+                    <Button
+                      variant="default"
+                      size="sm"
+                      className="ml-2 cursor-pointer"
+                    >
+                      <LogInIcon className="h-4 w-4 mr-2" />
+                      Logueate para guardar
                     </Button>
-                  </DialogTrigger>
-                  <DialogContent className="bg-card text-foreground border border-gray-800 w-auto  md:w-[120vw] mx-auto">
-                    <DialogTitle>Guarda tu selección de pelicula</DialogTitle>
-                    <DialogDescription>
-                      Tu has seleccionado{" "}
-                      <span className="font-semibold">
-                        {selectedMovie.title}
-                      </span>
-                    </DialogDescription>
-                    <div className="space-y-4">
-                      <div className="flex items-center gap-2 mb-4">
-                        <div className="w-16 h-24 relative flex-shrink-0">
-                          <Image
-                            src={selectedMovie.posterPath || "/placeholder.svg"}
-                            alt={selectedMovie.title}
-                            fill
-                            className="object-cover rounded-md"
-                          />
-                        </div>
-                        <div>
-                          <p className="font-medium">{selectedMovie.title}</p>
-                          <div className="flex items-center gap-1 mt-1">
-                            <Heart className="w-4 h-4 fill-red-500 text-red-500" />
-                            <span className="text-sm">
-                              {selectedMovie.affinity}% Score Affinity
-                            </span>
+                  </SignInButton>
+                ) : (
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <Button className="bg-primary hover:bg-primary/90 cursor-pointer">
+                        <SaveIcon className="w-4 h-4 mr-2" />
+                        Guardar esta opción
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent className="bg-card text-foreground border border-gray-800 w-auto  md:w-[120vw] mx-auto">
+                      <DialogTitle>Guarda tu selección de pelicula</DialogTitle>
+                      <DialogDescription>
+                        Tu has seleccionado{" "}
+                        <span className="font-semibold">
+                          {selectedMovie.title}
+                        </span>
+                      </DialogDescription>
+                      <div className="space-y-4">
+                        <div className="flex items-center gap-2 mb-4">
+                          <div className="w-16 h-24 relative flex-shrink-0">
+                            <Image
+                              src={
+                                selectedMovie.posterPath || "/placeholder.svg"
+                              }
+                              alt={selectedMovie.title}
+                              fill
+                              className="object-cover rounded-md"
+                            />
+                          </div>
+                          <div>
+                            <p className="font-medium">{selectedMovie.title}</p>
+                            <div className="flex items-center gap-1 mt-1">
+                              <Heart className="w-4 h-4 fill-red-500 text-red-500" />
+                              <span className="text-sm">
+                                {selectedMovie.affinity}% Score Affinity
+                              </span>
+                            </div>
                           </div>
                         </div>
-                      </div>
 
-                      <div className="space-y-2">
-                        <FormCreateSelectMovie
-                          infoVisit={infoVisit}
-                          moviePick={selectedMovie}
-                        />
+                        <div className="space-y-2">
+                          <FormCreateSelectMovie
+                            infoVisit={infoVisit}
+                            moviePick={selectedMovie}
+                          />
+                        </div>
                       </div>
-                    </div>
-                  </DialogContent>
-                </Dialog>
+                    </DialogContent>
+                  </Dialog>
+                )}
               </div>
             </div>
           </div>
