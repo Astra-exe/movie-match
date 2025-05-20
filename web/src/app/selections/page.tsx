@@ -1,8 +1,6 @@
 import Footer from "@/components/home-page/Footer";
 import Header from "@/components/home-page/Header";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Trash2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
