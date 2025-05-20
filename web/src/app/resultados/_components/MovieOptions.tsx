@@ -97,7 +97,10 @@ export default function MovieOptions({
             </div>
           }
         >
-          <div className="flex justify-center overflow-x-auto gap-4 py-4 snap-x snap-mandatory scrollbar-hide">
+          <div
+            className="flex sm:justify-center overflow-x-auto gap-3 sm:gap-4 py-4 snap-x snap-mandatory scrollbar-hide px-2 sm:px-0"
+            style={{ WebkitOverflowScrolling: "touch" }}
+          >
             {movieList.map((movie, index) => (
               <CardMovieOption
                 key={movie.id}
