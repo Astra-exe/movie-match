@@ -39,7 +39,7 @@ export default function SelectForm() {
       if (dataResponse.success) {
         if (dataResponse.data) {
           toast({
-            title: "Your movie options are ready",
+            title: "Tus películas recomendadas están listas",
             description: dataResponse.message,
             variant: "success",
           });
@@ -55,8 +55,8 @@ export default function SelectForm() {
     } catch (error) {
       console.error("Error submitting form:", error);
       toast({
-        title: "Submission failed",
-        description: "There was a problem. Please try again.",
+        title: "Error en la solicitud",
+        description: "Hubo un problema. Por favor, inténtalo de nuevo.",
         variant: "error",
       });
     }
