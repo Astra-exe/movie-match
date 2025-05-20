@@ -5,11 +5,10 @@ export default function HowWorks() {
         <div className="mx-auto grid max-w-5xl items-center gap-6 lg:grid-cols-2 lg:gap-12">
           <div className="space-y-4">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-              How Movie Matcher Works
+              Cómo funciona Movie Matcher
             </h2>
             <p className="text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-              Our algorithm analyzes your preferences and viewing history to
-              recommend movies you'll actually enjoy.
+              Nuestro algoritmo analiza tus preferencias y tu estado de ánimo para recomendarte películas que realmente disfrutarás.
             </p>
           </div>
           <ul className="space-y-4 lg:space-y-6">
@@ -18,9 +17,9 @@ export default function HowWorks() {
                 1
               </div>
               <div className="space-y-1">
-                <h3 className="text-xl font-bold">Login</h3>
+                <h3 className="text-xl font-bold">Inicia sesión</h3>
                 <p className="text-gray-500 dark:text-gray-400">
-                  Login to your account to access certain features.
+                  Inicia sesión en tu cuenta de Movie Matcher para acceder al sistema de recomendaciones.
                 </p>
               </div>
             </li>
@@ -29,10 +28,9 @@ export default function HowWorks() {
                 2
               </div>
               <div className="space-y-1">
-                <h3 className="text-xl font-bold">Generate your selections</h3>
+                <h3 className="text-xl font-bold">Genera una recomendación</h3>
                 <p className="text-gray-500 dark:text-gray-400">
-                  Generate your movie selections based on our process to find
-                  the best matches for you.
+                  Genera tus selecciones de películas basadas en nuestro proceso para encontrar las mejores coincidencias para ti.
                 </p>
               </div>
             </li>
@@ -41,10 +39,9 @@ export default function HowWorks() {
                 3
               </div>
               <div className="space-y-1">
-                <h3 className="text-xl font-bold">Save your selections</h3>
+                <h3 className="text-xl font-bold">Comparte tus resultados</h3>
                 <p className="text-gray-500 dark:text-gray-400">
-                  Receive tailored movie suggestions that match your unique
-                  preferences.
+                  Comparte tus recomendaciones de las películas perfectas para cualquier ocasión. ¡Solo preocupate por disfrutar!
                 </p>
               </div>
             </li>

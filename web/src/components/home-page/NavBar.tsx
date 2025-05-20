@@ -10,19 +10,19 @@ export default function NavBar() {
         href="/"
         className="text-sm font-medium hover:underline underline-offset-4"
       >
-        Home
+        Inicio
       </Link>
       <Link
         href="/generate"
         className="text-sm font-medium hover:underline underline-offset-4"
       >
-        Generate
+        Generar
       </Link>
       <Link
         href="/explore"
         className="text-sm font-medium hover:underline underline-offset-4"
       >
-        Explore
+        Explora
       </Link>
       <SignedOut>
         <SignInButton

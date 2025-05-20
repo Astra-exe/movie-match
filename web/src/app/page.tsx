@@ -22,10 +22,10 @@ export default function Home() {
               <article className="relative z-10 text-center">
                 <Logo />
                 <h1 className="text-4xl md:text-6xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary mb-2">
-                  Movie Matcher
+                  Movie Match
                 </h1>
                 <p className="text-lg md:text-xl text-gray-300 max-w-[700px] mx-auto">
-                  Find your perfect movie match
+                  Encuentra el match perfecto en una película
                 </p>
               </article>
               <div className="absolute bottom-0 w-full h-12 bg-gradient-to-t from-black/50 to-transparent"></div>
@@ -173,12 +173,11 @@ export default function Home() {
           {/* Hero copy */}
           <article className="mt-8 mx-auto max-w-3xl text-center bg-card p-8 border-2 border-border">
             <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
-              <strong className="text-primary">Match</strong> with{" "}
-              <strong className="text-primary">movies</strong> you'll love
+              <strong className="text-primary">Películas</strong> hechas{" "}
+              <strong className="text-primary">para</strong> ti
             </h2>
             <p className="mt-4 text-lg text-gray-400">
-              Tell us what you like, and we'll find the perfect movies for your
-              taste. No more endless scrolling through streaming services.
+              Dinos lo que te gusta y nosotros encontraremos las películas perfectas para ti. No más scroll sin fin en los servicios de streaming.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <Button
@@ -187,7 +186,7 @@ export default function Home() {
                 className="bg-primary hover:bg-primary/80 cursor-pointer"
               >
                 <Link href="/generate">
-                  Get Started <ChevronRight className="ml-2 h-4 w-4" />
+                  Comienza ahora <ChevronRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
               <Button
@@ -196,7 +195,7 @@ export default function Home() {
                 variant="link"
                 className="cursor-pointer border-primary border-2 hover:bg-primary hover:text-background"
               >
-                <Link href="/explore">Explore Selections</Link>
+                <Link href="/explore">Explorar selecciones</Link>
               </Button>
             </div>
           </article>
