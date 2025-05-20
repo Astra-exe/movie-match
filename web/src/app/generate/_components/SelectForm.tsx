@@ -77,8 +77,8 @@ export default function SelectForm() {
         </div>
       )}
       <SelectWrapperForm
-        title="Movie Visit Selection"
-        description="Plan your perfect movie outing in just a few steps."
+        title="Selección personalizada de películas"
+        description="Arma tu plan perfecto para disfrutar del séptimo arte en solo unos pasos."
         defaultValues={defaultValues}
         onSubmit={onSubmit}
         form={form}

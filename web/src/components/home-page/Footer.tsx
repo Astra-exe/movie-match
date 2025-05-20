@@ -10,24 +10,24 @@ export default function Footer() {
           <div className="space-y-4">
             <div className="flex items-center gap-2 font-bold text-white">
               <Logo className="w-8 h-8" />
-              <span className="text-xl">MovieMatcher</span>
+              <span className="text-xl">MovieMatch</span>
             </div>
             <p className="text-sm text-gray-400 max-w-xs">
-              Discover films that resonate with your unique taste. Our
-              AI-powered platform learns what you love and finds your perfect
-              movie matches.
+              Descubre películas que conectan con tu estilo único. Nuestra
+              plataforma impulsada por IA aprende tus gustos y encuentra las
+              películas perfectas para ti.
             </p>
           </div>
 
           <div className="space-y-4">
-            <h3 className="text-lg font-medium text-white">Quick Links</h3>
+            <h3 className="text-lg font-medium text-white">Enlaces rápidos</h3>
             <ul className="space-y-2">
               <li>
                 <Link
                   href="/"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
-                  Home
+                  Inicio
                 </Link>
               </li>
               <li>
@@ -35,7 +35,7 @@ export default function Footer() {
                   href="/generate"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
-                  Generate
+                  Generar
                 </Link>
               </li>
               {/* <li>
@@ -43,19 +43,19 @@ export default function Footer() {
                   href="/explore"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
-                  Explore
+                  Explora
                 </Link>
               </li> */}
             </ul>
           </div>
 
           <div className="space-y-4">
-            <h3 className="text-lg font-medium text-white">Community</h3>
+            <h3 className="text-lg font-medium text-white">Comunidad</h3>
             <Link
               href="#"
               className="text-gray-400 hover:text-white transition-colors"
             >
-              Contribute on GitHub
+              Contribuye en GitHub
             </Link>
           </div>
         </section>
@@ -63,7 +63,7 @@ export default function Footer() {
         <div className="mt-10 border-t border-gray-800 pt-8">
           <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
             <p className="text-sm text-gray-500">
-              © 2025 MovieMatcher. All rights reserved.
+              © 2025 MovieMatch. Todos los derechos reservados.
             </p>
             <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-500">
               <Link
@@ -80,12 +80,12 @@ export default function Footer() {
           <div className="mt-10 text-center">
             <div className="inline-flex items-center justify-center rounded-full bg-gray-900 px-6 py-3 shadow-lg">
               <p className="text-sm font-medium text-white">
-                Ready to find your next favorite movie?{" "}
+                ¿Listo para encontrar tu próxima película favorita?{" "}
                 <Link
                   href="#"
                   className="ml-1 underline text-secondary hover:text-secondary/80"
                 >
-                  Login now
+                  Ingresa ahora
                 </Link>
               </p>
             </div>

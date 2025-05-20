@@ -136,7 +136,7 @@ export default function MovieOptions({
                   <div className="flex items-center">
                     <Heart className="w-4 h-4 sm:w-5 sm:h-5 fill-red-500 text-red-500 mr-1.5" />
                     <span className="text-xs sm:text-sm font-medium text-gray-300">
-                      Affinity Score:
+                      Afinidad:
                     </span>
                   </div>
                   <span className="font-bold text-sm sm:text-base">
@@ -195,7 +195,7 @@ export default function MovieOptions({
 
               {/* Why to watch - reasons */}
               <div>
-                <h3 className="text-lg font-semibold mb-2">Why Watch It</h3>
+                <h3 className="text-lg font-semibold mb-2">¿Por qué verla?</h3>
                 <p className="text-gray-300">{selectedMovie.why}</p>
               </div>
 
@@ -203,7 +203,7 @@ export default function MovieOptions({
               <div>
                 <h3 className="text-lg font-semibold mb-2 flex items-center gap-2">
                   <Users className="w-4 h-4 sm:w-5 sm:h-5" />
-                  People Going ({infoVisit.people.length})
+                  Personas en el plan({infoVisit.people.length})
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   {infoVisit.people.map((attendee) => (

@@ -28,17 +28,17 @@ export default function VisitInfoStep({
   return (
     <FormStep step={0} validator={validateStep} fieldNames={stepFields}>
       <div className="space-y-6">
-        <h3 className="text-xl font-bold">Your Visit</h3>
+        <h3 className="text-xl font-bold">Tu visita</h3>
         <FormField
           control={form.control}
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Visit Name</FormLabel>
+              <FormLabel>Nombra tu plan</FormLabel>
               <FormControl>
                 <Input
                   className="border border-ring placeholder:text-gray-400 placeholder:italic"
-                  placeholder="Movie night"
+                  placeholder="Noche de películas"
                   autoFocus
                   {...field}
                 />
@@ -52,7 +52,7 @@ export default function VisitInfoStep({
           name="size"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Number of People</FormLabel>
+              <FormLabel>¿Cuántos van?</FormLabel>
               <FormControl>
                 <Input
                   type="number"

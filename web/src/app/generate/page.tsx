@@ -10,11 +10,10 @@ export default function GeneratePage() {
         <header className="w-[90%] mx-auto">
           <div className="py-8 md:py-14 lg:py-20 text-center max-w-2xl mx-auto">
             <h1 className="text-4xl font-bold text-primary">
-              Generate Your Movie Selection
+              Genera tu selección de películas
             </h1>
             <p className="mb-3 text-lg text-gray-300">
-              Use our AI-powered tool to generate your ideal option to watch in
-              theaters based on your visit information.
+              Utiliza nuestra herramienta potenciada con IA para descubrir la película perfecta para ver, personalizada según los detalles de tu visita.
             </p>
           </div>
         </header>

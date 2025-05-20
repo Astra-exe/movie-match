@@ -47,7 +47,7 @@ export default async function ResultsPage() {
     movieRecommendations = JSON.parse(decoded);
   }
   if (!movieRecommendations) {
-    return <p>No movies found</p>;
+    return <p>No se encontraron películas</p>;
   }
 
   const movieOptionsPromise = movieRecommendations.recommendations.map(
@@ -95,11 +95,10 @@ export default async function ResultsPage() {
         <header className="w-[90%] mx-auto">
           <div className="py-8 md:py-14 lg:py-20 text-center max-w-2xl mx-auto">
             <h1 className="text-4xl font-bold text-primary">
-              Your Movie Recommendations
+              Tus recomendaciones de películas
             </h1>
             <p className="mb-3 text-lg text-gray-300">
-              Check the options we found for you based on your visit information
-              and save your pick selection
+              Revisa las opciones que encontramos para ti según tu información y elige tu favorita. Estamos seguros de que la disfrutarás.
             </p>
           </div>
         </header>
@@ -107,13 +106,13 @@ export default async function ResultsPage() {
           <div>
             {movieOptions.length === 0 && (
               <div className="text-center py-8 text-xl">
-                No movie options found. Please try again.
+                No se encontraron películas que coincidan con tus preferencias. Por favor intenta de nuevo.
               </div>
             )}
             <Suspense
               fallback={
                 <div className="text-center py-10 text-lg">
-                  Loading movie options...
+                  Cargando recomendaciones...
                 </div>
               }
             >

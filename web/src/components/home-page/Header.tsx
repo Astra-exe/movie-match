@@ -8,7 +8,7 @@ export default function Header() {
         {/* Logo */}
         <div className="flex items-center gap-2 font-bold">
           <Logo className="w-8 h-8" />
-          <strong>MovieMatcher</strong>
+          <strong>MovieMatch</strong>
         </div>
         {/* Navbar */}
         <div className="ml-auto">

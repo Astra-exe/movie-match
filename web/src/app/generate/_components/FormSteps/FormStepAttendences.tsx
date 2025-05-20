@@ -68,9 +68,9 @@ export default function FormStepAttendences({
     <FormStep step={1} validator={validateStep} fieldNames={stepFields}>
       <div className="space-y-6">
         <div className="flex justify-between items-center">
-          <h3 className="text-xl font-bold">Attendences</h3>
+          <h3 className="text-xl font-bold">Asistentes</h3>
           <span className="text-sm text-muted-foreground">
-            {fields.length} of {people} attendences
+            {fields.length} de {people} asistentes
           </span>
         </div>
 
@@ -90,10 +90,10 @@ export default function FormStepAttendences({
                   name={`people.${index}.name`}
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Attendence's Name</FormLabel>
+                      <FormLabel>Nombre del asistente</FormLabel>
                       <FormControl>
                         <Input
-                          placeholder="John Doe"
+                          placeholder="Juan Pérez"
                           {...field}
                           className="border border-ring placeholder:text-gray-400 placeholder:italic"
                           autoFocus={index === 0}
@@ -109,14 +109,14 @@ export default function FormStepAttendences({
                   name={`people.${index}.genre`}
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Movie Genre Preference</FormLabel>
+                      <FormLabel>Género favorito</FormLabel>
                       <Select
                         onValueChange={field.onChange}
                         defaultValue={field.value}
                       >
                         <FormControl>
                           <SelectTrigger className="border border-ring w-full">
-                            <SelectValue placeholder="Select a genre" />
+                            <SelectValue placeholder="Selecciona un género" />
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
@@ -137,7 +137,7 @@ export default function FormStepAttendences({
                   name={`people.${index}.emojis`}
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Representative Emojis</FormLabel>
+                      <FormLabel>Dos emojis representativos</FormLabel>
                       <FormControl>
                         <Input
                           placeholder="😎🎬"

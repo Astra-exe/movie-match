@@ -7,6 +7,10 @@ import config
 
 app = Flask(__name__)
 
+@app.route("/", methods=["GET"])
+def home():
+    return "<h2>Welcome to the Movie Recommender API</h2>"
+
 @app.route("/recommend", methods=["POST"])
 def recommend():
     try:

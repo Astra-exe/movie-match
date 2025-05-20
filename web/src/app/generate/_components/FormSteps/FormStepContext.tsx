@@ -34,12 +34,12 @@ export default function FormStepContext({
     if (!values.context) {
       form.setError("context", {
         type: "manual",
-        message: "Context is required",
+        message: "Se requiere un contexto",
       });
       return false; // Prevent step completion
     }
     if (!values.mood) {
-      form.setError("mood", { type: "manual", message: "Mood is required" });
+      form.setError("mood", { type: "manual", message: "Se requiere un estado de ánimo" });
       return false; // Prevent step completion
     }
     return form.trigger(stepFields as any);
@@ -48,7 +48,7 @@ export default function FormStepContext({
   return (
     <FormStep step={2} validator={validateStep} fieldNames={stepFields}>
       <div className="space-y-6">
-        <h3 className="text-xl font-bold">Visit Context</h3>
+        <h3 className="text-xl font-bold">Contexto de tu plan</h3>
 
         <div className="grid gap-6 md:grid-cols-2">
           <FormField
@@ -56,7 +56,7 @@ export default function FormStepContext({
             name="context"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Context</FormLabel>
+                <FormLabel>Contexto</FormLabel>
                 <Select
                   onValueChange={field.onChange}
                   defaultValue={field.value}
@@ -66,7 +66,7 @@ export default function FormStepContext({
                       className="border border-ring w-full"
                       autoFocus
                     >
-                      <SelectValue placeholder="Select context" />
+                      <SelectValue placeholder="Selecciona un contexto" />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
@@ -87,14 +87,14 @@ export default function FormStepContext({
             name="mood"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Mood</FormLabel>
+                <FormLabel>Estado de ánimo</FormLabel>
                 <Select
                   onValueChange={field.onChange}
                   defaultValue={field.value}
                 >
                   <FormControl>
                     <SelectTrigger className="border border-ring w-full placeholder:text-gray-400 placeholder:italic">
-                      <SelectValue placeholder="Select mood" />
+                      <SelectValue placeholder="Selecciona un mood" />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
@@ -116,10 +116,10 @@ export default function FormStepContext({
           name="comments"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Comments</FormLabel>
+              <FormLabel>Comentarios adicionales</FormLabel>
               <FormControl>
                 <Textarea
-                  placeholder="Add any additional comments or notes about this visit..."
+                  placeholder="Escribe aquí cualquier comentario o dato adicional sobre tu plan..."
                   className="min-h-[120px] border border-ring"
                   {...field}
                 />
