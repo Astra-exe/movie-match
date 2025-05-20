@@ -188,7 +188,7 @@ export default function Home() {
                 size="lg"
                 className="bg-primary hover:bg-primary/80 cursor-pointer"
               >
-                <Link href="/generate">
+                <Link href="/generar">
                   Comienza ahora <ChevronRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
