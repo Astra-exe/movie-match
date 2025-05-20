@@ -13,7 +13,7 @@ export default function NavBar() {
         Inicio
       </Link>
       <Link
-        href="/generate"
+        href="/generar"
         className="text-sm font-medium hover:underline underline-offset-4"
       >
         Generar
