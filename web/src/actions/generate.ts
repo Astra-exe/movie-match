@@ -4,8 +4,7 @@ import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 import type { SelectionData } from "@/lib/data/schema";
 
-// TODO: delete this mock data
-import { generateOpts } from "@/lib/data/mocks";
+// import { generateOpts } from "@/lib/data/mocks";
 
 interface RecommendationGenerated {
   affinity: number;
@@ -37,8 +36,6 @@ interface SubmitFormSelectMovieResponse {
   error?: string;
 }
 
-const URL_API_ANALIZE = "http://localhost:5000/recommend";
-
 export async function submitFormSelectMovie(
   values: SelectionData
 ): Promise<SubmitFormSelectMovieResponse> {
@@ -54,22 +51,23 @@ export async function submitFormSelectMovie(
       comments,
     };
 
-    return {
-      success: true,
-      data: {
-        ...generateOpts,
-        info: {
-          visit: name,
-          context: context ?? "",
-          mood: mood ?? "",
-          comments: comments ?? "",
-          people: people ?? [],
-        },
-      },
-      message: "Your movie options has been successfully selected!",
-    };
+    // return {
+    //   success: true,
+    //   data: {
+    //     ...generateOpts,
+    //     info: {
+    //       visit: name,
+    //       context: context ?? "",
+    //       mood: mood ?? "",
+    //       comments: comments ?? "",
+    //       people: people ?? [],
+    //     },
+    //   },
+    //   message: "Your movie options has been successfully selected!",
+    // };
 
-    const response = await fetch(URL_API_ANALIZE, {
+    const urlRecommend = `${process.env.API_ANALIZE_URL}/recommend`;
+    const response = await fetch(urlRecommend, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -78,7 +76,7 @@ export async function submitFormSelectMovie(
     });
 
     if (!response.ok) {
-      throw new Error("Failed to submit data");
+      throw new Error("Error al generar los datos");
     }
 
     const dataResults = await response.json();
@@ -95,16 +93,16 @@ export async function submitFormSelectMovie(
           people: people ?? [],
         },
       },
-      message: "Your movie options has been successfully selected!",
+      message: "Tus opciones de película han sido seleccionadas exitosamente!",
     };
   } catch (error) {
     console.error("Error submiting data", error);
     return {
       success: false,
       data: null,
-      error: "Failed to submit data. Try again later",
+      error: "Error al enviar los datos. Inténtalo de nuevo más tarde",
       message:
-        error instanceof Error ? error.message : "Unknown error occurred",
+        error instanceof Error ? error.message : "Ocurrio un error desconocido",
     };
   }
 }
