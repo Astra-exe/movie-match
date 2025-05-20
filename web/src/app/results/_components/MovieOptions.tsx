@@ -4,15 +4,7 @@ import { useState } from "react";
 import { SignInButton, useUser } from "@clerk/nextjs";
 
 import Image from "next/image";
-import {
-  ChevronLeft,
-  ChevronRight,
-  Heart,
-  Play,
-  Users,
-  SaveIcon,
-  LogInIcon,
-} from "lucide-react";
+import { Heart, Play, Users, SaveIcon, LogInIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -52,8 +44,6 @@ interface MovieOptionsProps {
     }[];
   };
 }
-
-const attendees = ["Maria", "John", "Alex", "Sarah", "Michael"];
 
 export default function MovieOptions({
   movieList,
@@ -158,53 +148,55 @@ export default function MovieOptions({
               <div>
                 <h3 className="text-lg font-semibold mb-2 flex items-center gap-2">
                   <Users className="w-5 h-5" />
-                  People Going ({attendees.length})
+                  People Going ({infoVisit.people.length})
                 </h3>
                 <div className="flex flex-wrap gap-2">
-                  {attendees.map((person) => (
+                  {infoVisit.people.map((person) => (
                     <Badge
-                      key={person}
+                      key={person.name}
                       variant="outline"
                       className="bg-gray-800 rounded-full"
                     >
-                      {person}
+                      {person.name}
                     </Badge>
                   ))}
                 </div>
               </div>
 
               <div className="mt-5 flex gap-x-5 items-center">
-                <Dialog>
-                  <DialogTrigger asChild>
-                    <Button className="bg-input text-foreground hover:bg-secondary cursor-pointer">
-                      <Play className="w-4 h-4 mr-2" />
-                      Ver Trailer
-                    </Button>
-                  </DialogTrigger>
-                  <DialogContent>
-                    <DialogTitle></DialogTitle>
-                    <DialogClose className="absolute bg-white/60 top-4 right-4 rounded-full p-2 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 z-[20] cursor-pointer">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-5 w-5 text-gray-600"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth={2}
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M6 18L18 6M6 6l12 12"
-                        />
-                      </svg>
-                    </DialogClose>
-                    <div className="">
-                      {/* @ts-expect-error: Custom element not recognized by TS */}
-                      <lite-youtube videoid={selectedMovie.youtubeVideoKey} />
-                    </div>
-                  </DialogContent>
-                </Dialog>
+                {selectedMovie.youtubeVideoKey && (
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <Button className="bg-input text-foreground hover:bg-secondary cursor-pointer">
+                        <Play className="w-4 h-4 mr-2" />
+                        Ver Trailer
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent>
+                      <DialogTitle></DialogTitle>
+                      <DialogClose className="absolute bg-white/60 top-4 right-4 rounded-full p-2 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 z-[20] cursor-pointer">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-5 w-5 text-gray-600"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth={2}
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M6 18L18 6M6 6l12 12"
+                          />
+                        </svg>
+                      </DialogClose>
+                      <div className="">
+                        {/* @ts-expect-error: Custom element not recognized by TS */}
+                        <lite-youtube videoid={selectedMovie.youtubeVideoKey} />
+                      </div>
+                    </DialogContent>
+                  </Dialog>
+                )}
 
                 {!isSignedIn ? (
                   <SignInButton
