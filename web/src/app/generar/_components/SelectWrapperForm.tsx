@@ -35,8 +35,8 @@ export default function SelectWrapperForm<T extends z.ZodType>({
 }: SelectWrapperFormProps<T>) {
   return (
     <article className="bg-card p-8 border-2 border-border rounded max-w-4xl mx-auto">
-      <hgroup className="mb-8">
-        <h3 className="font-bold text-3xl">{title}</h3>
+      <hgroup className="mb-8 space-y-1">
+        <h3 className="font-bold text-2xl sm:text-3xl">{title}</h3>
         <p className="text-gray-400">{description}</p>
       </hgroup>
       <Form {...form}>
