@@ -1,20 +1,19 @@
 "use client";
 
-import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, useWatch } from "react-hook-form";
-import { useState } from "react";
-import type { SelectionData } from "@/lib/data/schema";
-import { formSchema, defaultValues, stepFields } from "@/lib/data/schema";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from "@/hooks/useToast";
+
 import SelectWrapperForm from "@/app/generate/_components/SelectWrapperForm";
 import VisitInfoStep from "@/app/generate/_components/FormSteps/FormStepVisit";
-import FormStepAttendences from "./FormSteps/FormStepAttendences";
-import FormStepContext from "./FormSteps/FormStepContext";
-import { submitFormSelectMovie } from "@/actions/generate";
-import Results from "./Results";
+import FormStepAttendences from "@/app/generate/_components/FormSteps/FormStepAttendences";
+import FormStepContext from "@/app/generate/_components/FormSteps/FormStepContext";
+
+import type { SelectionData } from "@/lib/data/schema";
+import { formSchema, defaultValues, stepFields } from "@/lib/data/schema";
+import { submitFormSelectMovie, passDataToServer } from "@/actions/generate";
 
 export default function SelectForm() {
-  const [results, setResults] = useState<any>(null);
-
   const form = useForm<SelectionData>({
     resolver: zodResolver(formSchema),
     defaultValues,
@@ -29,36 +28,38 @@ export default function SelectForm() {
   });
 
   const onSubmit = async (values: SelectionData) => {
+    let recommendationsMovies = null;
     try {
       const dataResponse = await submitFormSelectMovie(values);
 
       if (dataResponse.success) {
         if (dataResponse.data) {
-          // toast
-          const { recommendations } = dataResponse.data;
-          setResults(recommendations); // Save the results to state
+          toast({
+            title: "Your movie options are ready",
+            description: dataResponse.message,
+            variant: "success",
+          });
+          recommendationsMovies = dataResponse.data;
         }
       } else {
-        //  toast({
-        //   title: "Error",
-        //   description: dataResponse.error,
-        //   variant: "destructive",
-        // })
+        toast({
+          title: "Error",
+          description: dataResponse.error,
+          variant: "error",
+        });
       }
     } catch (error) {
       console.error("Error submitting form:", error);
-      // toast({
-      //   title: "Submission failed",
-      //   description: "There was a problem. Please try again.",
-      //   variant: "destructive",
-      // })
+      toast({
+        title: "Submission failed",
+        description: "There was a problem. Please try again.",
+        variant: "error",
+      });
+    }
+    if (recommendationsMovies) {
+      await passDataToServer(recommendationsMovies);
     }
   };
-
-  if (results) {
-    // Render the server Results component with the results as prop
-    return <Results results={results} />;
-  }
 
   return (
     <>

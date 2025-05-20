@@ -1,3 +1,4 @@
+import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { LogIn } from "lucide-react";
@@ -23,10 +24,24 @@ export default function NavBar() {
       >
         Explore
       </Link>
-      <Button variant="default" size="sm" className="ml-2 cursor-pointer">
-        <LogIn className="h-4 w-4 mr-2" />
-        Login
-      </Button>
+      <SignedOut>
+        <SignInButton
+          mode="modal"
+          appearance={{
+            elements: {
+              formButtonPrimary: "bg-slate-500 hover:bg-slate-400 text-sm",
+            },
+          }}
+        >
+          <Button variant="default" size="sm" className="ml-2 cursor-pointer">
+            <LogIn className="h-4 w-4 mr-2" />
+            Login
+          </Button>
+        </SignInButton>
+      </SignedOut>
+      <SignedIn>
+        <UserButton />
+      </SignedIn>
     </nav>
   );
 }

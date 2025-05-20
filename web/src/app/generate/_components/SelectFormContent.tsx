@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import type { FieldValues, UseFormReturn } from "react-hook-form";
 import { useMultiForm } from "@/app/generate/hooks/useMultiFormContext";
 import MultiFormButtons from "@/app/generate/_components/MultiFormButtons";
+import { toast } from "@/hooks/useToast";
 
 interface SelectFormContentProps<T extends FieldValues> {
   onSubmit: (values: T) => void;
@@ -48,11 +49,11 @@ export function SelectFormContent<T extends FieldValues>({
           console.log("Validation result:", isValid);
 
           if (!isValid) {
-            // toast({
-            //   title: "Validation Error",
-            //   description: "Please check your inputs and try again.",
-            //   variant: "destructive",
-            // })
+            toast({
+              title: "Validation Error",
+              description: "Please check your inputs and try again.",
+              variant: "error",
+            });
             console.log("Please check your inputs and try again.");
             return;
           }
@@ -74,19 +75,18 @@ export function SelectFormContent<T extends FieldValues>({
         }
 
         // Show a success toast
-        // toast({
-        //   title: "Form submitted!",
-        //   description: "Thank you for completing the wizard form.",
-        //   variant: "success",
-        // });
-        console.log("Thank you for completing the form");
+        toast({
+          title: "Form submitted!",
+          description: "Thank you for completing the form.",
+          variant: "success",
+        });
       } catch (error) {
         console.error("Form submission error:", error);
-        // toast({
-        //   title: "Error",
-        //   description: "There was a problem submitting the form.",
-        //   variant: "destructive",
-        // });
+        toast({
+          title: "Error",
+          description: "There was a problem submitting the form.",
+          variant: "error",
+        });
       }
     };
 
