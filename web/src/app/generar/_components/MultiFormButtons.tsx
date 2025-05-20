@@ -16,9 +16,9 @@ interface MultiFormButtonsProps {
 export default function MultiFormButtons({
   className,
   onComplete,
-  completeText = "Complete",
-  nextText = "Next",
-  prevText = "Back",
+  completeText = "Completar",
+  nextText = "Siguiente",
+  prevText = "Atrás",
 }: MultiFormButtonsProps) {
   const {
     nextStep,
