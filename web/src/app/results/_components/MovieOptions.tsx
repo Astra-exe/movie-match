@@ -161,17 +161,17 @@ export default function MovieOptions({
               <div className="bg-gray-800/50 rounded-lg p-4 space-y-3 border border-gray-700">
                 <h3 className="text-lg font-semibold flex items-center gap-2">
                   <Calendar className="w-5 h-5 text-primary" />
-                  Visit Details
+                  Detalles de la visita
                 </h3>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <p className="text-sm text-gray-400">Visit Name</p>
+                    <p className="text-sm text-gray-400">Nombre de la visita</p>
                     <p className="font-medium">{infoVisit.visit}</p>
                   </div>
 
                   <div>
-                    <p className="text-sm text-gray-400">Mood</p>
+                    <p className="text-sm text-gray-400">Estado de ánimo</p>
                     <div className="flex items-center gap-1.5">
                       {/* <Smile className="w-4 h-4 text-yellow-400" /> */}
                       <p className="font-medium">{infoVisit.mood}</p>
@@ -179,12 +179,12 @@ export default function MovieOptions({
                   </div>
 
                   <div className="sm:col-span-2">
-                    <p className="text-sm text-gray-400">Context</p>
+                    <p className="text-sm text-gray-400">Contexto</p>
                     <p>{infoVisit.context}</p>
                   </div>
 
                   <div className="sm:col-span-2">
-                    <p className="text-sm text-gray-400">Comments</p>
+                    <p className="text-sm text-gray-400">Comentarios</p>
                     <p className="text-sm">{infoVisit.comments}</p>
                   </div>
                 </div>
@@ -216,7 +216,7 @@ export default function MovieOptions({
                       </Badge>
                       <div className="flex items-center gap-1 text-xs text-gray-300">
                         <Tag className="w-3 h-3" />
-                        <span>Prefers: {attendee.genre}</span>
+                        <span>Prefiere: {attendee.genre}</span>
                       </div>
                     </div>
                   ))}

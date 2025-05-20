@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import type { FieldValues, UseFormReturn } from "react-hook-form";
-import { useMultiForm } from "@/app/generate/hooks/useMultiFormContext";
-import MultiFormButtons from "@/app/generate/_components/MultiFormButtons";
+import { useMultiForm } from "@/app/generar/hooks/useMultiFormContext";
+import MultiFormButtons from "@/app/generar/_components/MultiFormButtons";
 import { toast } from "@/hooks/useToast";
 
 interface SelectFormContentProps<T extends FieldValues> {

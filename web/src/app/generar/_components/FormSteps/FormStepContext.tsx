@@ -15,7 +15,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import FormStep from "@/app/generate/_components/FormStep";
+import FormStep from "@/app/generar/_components/FormStep";
 import type { UseFormReturn } from "react-hook-form";
 import type { SelectionData } from "@/lib/data/schema";
 import { contextOpts, moodOpts } from "@/lib/data/mocks";
@@ -39,7 +39,10 @@ export default function FormStepContext({
       return false; // Prevent step completion
     }
     if (!values.mood) {
-      form.setError("mood", { type: "manual", message: "Se requiere un estado de ánimo" });
+      form.setError("mood", {
+        type: "manual",
+        message: "Se requiere un estado de ánimo",
+      });
       return false; // Prevent step completion
     }
     return form.trigger(stepFields as any);

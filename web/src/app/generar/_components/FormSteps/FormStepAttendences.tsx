@@ -15,7 +15,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import FormStep from "@/app/generate/_components/FormStep";
+import FormStep from "@/app/generar/_components/FormStep";
 import { useFieldArray } from "react-hook-form";
 import type { UseFormReturn } from "react-hook-form";
 import type { SelectionData } from "@/lib/data/schema";

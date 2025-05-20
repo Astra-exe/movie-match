@@ -5,10 +5,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "@/hooks/useToast";
 import { useState } from "react";
 
-import SelectWrapperForm from "@/app/generate/_components/SelectWrapperForm";
-import VisitInfoStep from "@/app/generate/_components/FormSteps/FormStepVisit";
-import FormStepAttendences from "@/app/generate/_components/FormSteps/FormStepAttendences";
-import FormStepContext from "@/app/generate/_components/FormSteps/FormStepContext";
+import SelectWrapperForm from "@/app/generar/_components/SelectWrapperForm";
+import VisitInfoStep from "@/app/generar/_components/FormSteps/FormStepVisit";
+import FormStepAttendences from "@/app/generar/_components/FormSteps/FormStepAttendences";
+import FormStepContext from "@/app/generar/_components/FormSteps/FormStepContext";
 
 import type { SelectionData } from "@/lib/data/schema";
 import { formSchema, defaultValues, stepFields } from "@/lib/data/schema";

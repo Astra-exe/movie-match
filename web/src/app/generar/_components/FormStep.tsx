@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { useMultiForm } from "@/app/generate/hooks/useMultiFormContext";
+import { useMultiForm } from "@/app/generar/hooks/useMultiFormContext";
 import { cn } from "@/lib/utils";
 
 interface FormStepProps {

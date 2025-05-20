@@ -1,6 +1,6 @@
 "use client";
 
-import FormStep from "@/app/generate/_components/FormStep";
+import FormStep from "@/app/generar/_components/FormStep";
 import type { SelectionData } from "@/lib/data/schema";
 import type { UseFormReturn } from "react-hook-form";
 import {

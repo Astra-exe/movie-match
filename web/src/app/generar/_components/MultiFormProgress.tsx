@@ -1,5 +1,5 @@
 "use client";
-import { useMultiForm } from "@/app/generate/hooks/useMultiFormContext";
+import { useMultiForm } from "@/app/generar/hooks/useMultiFormContext";
 import { Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 

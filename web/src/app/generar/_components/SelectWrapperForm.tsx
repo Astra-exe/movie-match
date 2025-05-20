@@ -4,7 +4,7 @@ import React from "react";
 import type { z } from "zod";
 import type { UseFormReturn } from "react-hook-form";
 import { Form } from "@/components/ui/form";
-import { MultiFormContextProvider } from "@/app/generate/context/MultiFormContext";
+import { MultiFormContextProvider } from "@/app/generar/context/MultiFormContext";
 import { SelectFormContent } from "./SelectFormContent";
 import { MultiFormProgress } from "./MultiFormProgress";
 
