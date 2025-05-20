@@ -3,6 +3,7 @@
 import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "@/hooks/useToast";
+import { useState } from "react";
 
 import SelectWrapperForm from "@/app/generate/_components/SelectWrapperForm";
 import VisitInfoStep from "@/app/generate/_components/FormSteps/FormStepVisit";
@@ -27,7 +28,10 @@ export default function SelectForm() {
     defaultValue: 1,
   });
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const onSubmit = async (values: SelectionData) => {
+    setIsLoading(true);
     let recommendationsMovies = null;
     try {
       const dataResponse = await submitFormSelectMovie(values);
@@ -59,10 +63,19 @@ export default function SelectForm() {
     if (recommendationsMovies) {
       await passDataToServer(recommendationsMovies);
     }
+    setIsLoading(false);
   };
 
   return (
     <>
+      {isLoading && (
+        <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/60">
+          <div className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin mb-4" />
+          <span className="text-lg text-white font-semibold">
+            Processing your movie options...
+          </span>
+        </div>
+      )}
       <SelectWrapperForm
         title="Movie Visit Selection"
         description="Plan your perfect movie outing in just a few steps."
