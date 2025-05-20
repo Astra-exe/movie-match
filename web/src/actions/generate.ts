@@ -124,5 +124,5 @@ export async function passDataToServer(data: SelectMovieResponse) {
     sameSite: "lax",
   });
 
-  redirect("/results");
+  redirect("/resultados");
 }
