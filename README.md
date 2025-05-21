@@ -179,9 +179,32 @@ py app.py      # o python app.py
 
 ## 📸 Capturas
 
-> Por agregar
+<div align="center">
 
-*(Se deja este espacio para capturas del flujo, recomendaciones y diseño del frontend)*
+  ### 📱 Home page
+  <img src="./assets/Home.webp" width="90%" alt="Pantalla de inicio" style="border-radius: 12px; margin-bottom: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1)">
+
+  ### 🔑 Autenticación
+  <img src="assets/cta.webp" width="90%" alt="Llamado a acción" style="border-radius: 8px; margin: 10px">
+  <img src="assets/Clerk_Login.webp" width="80%" alt="Login con Clerk" style="border-radius: 8px; margin: 10px">
+
+  ### 🎬 Proceso Interactivo (GIFs)
+  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin: 20px 0">
+    <img src="assets/step1.gif" width="90%" alt="Paso 1 - Nombre del plan" style="border-radius: 8px">
+    <img src="assets/step2.gif" width="90%" alt="Paso 2 - Asistentes" style="border-radius: 8px">
+    <img src="assets/step3.gif" width="90%" alt="Paso 3 - preferencias" style="border-radius: 8px">
+  </div>
+
+  ### 📊 Resultados
+  <img src="assets/results.webp" width="80%" alt="Pantalla de resultados" style="border-radius: 10px; margin: 15px 0; border: 1px solid #eee">
+  <img src="assets/pick.webp" width="80%" alt="Detalle de recomendación" style="border-radius: 8px; margin-top: 10px">
+
+  ### ℹ️ Cómo Funciona
+  <img src="assets/how-work.webp" width="80%" alt="Diagrama de funcionamiento" style="background: white; padding: 15px; border-radius: 12px">
+
+  ### 🏁 Footer
+  <img src="assets/footer.webp" width="100%" alt="Pie de página" style="margin-top: 30px">
+</div>
 
 ---
 
