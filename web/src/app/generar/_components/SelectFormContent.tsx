@@ -50,11 +50,10 @@ export function SelectFormContent<T extends FieldValues>({
 
           if (!isValid) {
             toast({
-              title: "Validation Error",
-              description: "Please check your inputs and try again.",
+              title: "Error de validación",
+              description: "Por favor, revisa los campos resaltados.",
               variant: "error",
             });
-            console.log("Please check your inputs and try again.");
             return;
           }
         }
@@ -76,15 +75,15 @@ export function SelectFormContent<T extends FieldValues>({
 
         // Show a success toast
         toast({
-          title: "Form submitted!",
-          description: "Thank you for completing the form.",
+          title: "Información enviada",
+          description: "Gracias por completar el formulario.",
           variant: "success",
         });
       } catch (error) {
         console.error("Form submission error:", error);
         toast({
           title: "Error",
-          description: "There was a problem submitting the form.",
+          description: "Hubo un problema al enviar el formulario.",
           variant: "error",
         });
       }
