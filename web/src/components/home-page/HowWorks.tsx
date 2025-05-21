@@ -5,7 +5,7 @@ export default function HowWorks() {
         <div className="mx-auto grid max-w-5xl items-center gap-6 lg:grid-cols-2 lg:gap-12">
           <div className="space-y-4">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-              Cómo funciona Movie Matcher
+              Cómo funciona Movie Match
             </h2>
             <p className="text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
               Nuestro algoritmo analiza tus preferencias y tu estado de ánimo
