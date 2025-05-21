@@ -24,14 +24,14 @@ interface SelectWrapperFormProps<T extends z.ZodType> {
 export default function SelectWrapperForm<T extends z.ZodType>({
   title,
   description,
-  defaultValues,
+  // defaultValues,
   onSubmit,
   children,
-  className,
+  // className,
+  // persistenceKey = "multi-step-form-data",
+  // persistForm = false,
   form,
   stepFields = {},
-  persistenceKey = "multi-step-form-data",
-  persistForm = false,
 }: SelectWrapperFormProps<T>) {
   return (
     <article className="bg-card p-8 border-2 border-border rounded max-w-4xl mx-auto">

@@ -6,22 +6,22 @@ import { Suspense } from "react";
 import Image from "next/image";
 import {
   Heart,
-  Play,
+  // Play,
   Users,
-  SaveIcon,
-  LogInIcon,
+  // SaveIcon,
+  // LogInIcon,
   Calendar,
   Tag,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
+// import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
+// import {
+//   Dialog,
+//   DialogClose,
+//   DialogContent,
+//   DialogTitle,
+//   DialogTrigger,
+// } from "@/components/ui/dialog";
 import CardMovieOption from "./CardMovieOption";
 import CardMovieOptionSkeleton from "./CardMovieOptionSkeleton";
 // import * as LiteYoutube from "@justinribeiro/lite-youtube";
@@ -64,23 +64,23 @@ export default function MovieOptions({
     setShowDetails(true);
   };
 
-  const nextMovie = () => {
-    const nextIndex = selectedMovieIndex + 1;
-    if (nextIndex >= movieList.length) {
-      setSelectedMovieIndex(0);
-      return;
-    }
-    setSelectedMovieIndex(nextIndex);
-  };
+  // const nextMovie = () => {
+  //   const nextIndex = selectedMovieIndex + 1;
+  //   if (nextIndex >= movieList.length) {
+  //     setSelectedMovieIndex(0);
+  //     return;
+  //   }
+  //   setSelectedMovieIndex(nextIndex);
+  // };
 
-  const prevMovie = () => {
-    const prevIndex = selectedMovieIndex - 1;
-    if (prevIndex < 0) {
-      setSelectedMovieIndex(movieList.length - 1);
-      return;
-    }
-    setSelectedMovieIndex(prevIndex);
-  };
+  // const prevMovie = () => {
+  //   const prevIndex = selectedMovieIndex - 1;
+  //   if (prevIndex < 0) {
+  //     setSelectedMovieIndex(movieList.length - 1);
+  //     return;
+  //   }
+  //   setSelectedMovieIndex(prevIndex);
+  // };
 
   const selectedMovie = movieList[selectedMovieIndex];
 

@@ -19,6 +19,9 @@ export const metadata: Metadata = {
   title: "Movie Match",
   description:
     "Elige la mejor película para ver en el cine, considerando tus gustos, tu compañía y tu estado de ánimo.",
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({

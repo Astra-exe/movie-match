@@ -37,6 +37,19 @@ interface SelectMovieResponse {
   };
 }
 
+interface MovieOption {
+  id: string;
+  title: string;
+  overview: string;
+  genres: string[];
+  releaseDate: string;
+  posterPath: string;
+  backdropPath: string;
+  youtubeVideoKey: string;
+  affinity: number;
+  why: string;
+}
+
 export default async function ResultsPage() {
   // get the movie options from the cookies
   const cookieStore = await cookies();
@@ -47,7 +60,7 @@ export default async function ResultsPage() {
     movieRecommendations = JSON.parse(decoded);
   }
 
-  let movieOptions: any[] = [];
+  let movieOptions: MovieOption[] = [];
   if (movieRecommendations) {
     const movieOptionsPromise = movieRecommendations.recommendations.map(
       async (item: GenerateResult) => {
