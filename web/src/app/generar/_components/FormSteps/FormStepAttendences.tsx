@@ -2,6 +2,7 @@
 
 import {
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -84,7 +85,7 @@ export default function FormStepAttendences({
                 {index + 1}
               </span>
 
-              <div className="grid gap-4 md:grid-cols-3">
+              <div className="grid gap-4 md:grid-cols-3 items-start">
                 <FormField
                   control={form.control}
                   name={`people.${index}.name`}
@@ -157,6 +158,9 @@ export default function FormStepAttendences({
                           maxLength={4} // 2 emojis, but some emojis are 2 chars
                         />
                       </FormControl>
+                      <FormDescription className="text-xs text-muted-foreground">
+                        Elige dos emojis que representen al asistente.
+                      </FormDescription>
                       <FormMessage />
                     </FormItem>
                   )}
