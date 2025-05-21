@@ -6,25 +6,25 @@ import { Suspense } from "react";
 import Image from "next/image";
 import {
   Heart,
-  // Play,
+  Play,
   Users,
   // SaveIcon,
   // LogInIcon,
   Calendar,
   Tag,
 } from "lucide-react";
-// import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-// import {
-//   Dialog,
-//   DialogClose,
-//   DialogContent,
-//   DialogTitle,
-//   DialogTrigger,
-// } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import CardMovieOption from "./CardMovieOption";
 import CardMovieOptionSkeleton from "./CardMovieOptionSkeleton";
-// import * as LiteYoutube from "@justinribeiro/lite-youtube";
+import { YouTubeEmbed } from "@next/third-parties/google";
 
 interface MovieOptionsProps {
   movieList: {
@@ -225,7 +225,8 @@ export default function MovieOptions({
                   ))}
                 </div>
               </div>
-              {/*
+
+              {/* Trailer */}
               <div className="mt-5 flex gap-x-5 items-center">
                 {selectedMovie.youtubeVideoKey && (
                   <Dialog>
@@ -235,31 +236,24 @@ export default function MovieOptions({
                         Ver Trailer
                       </Button>
                     </DialogTrigger>
-                    <DialogContent>
+                    <DialogContent className="[&>button]:text-foreground [&>button]:cursor-pointer">
                       <DialogTitle></DialogTitle>
-                      <DialogClose className="absolute bg-white/60 top-4 right-4 rounded-full p-2 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 z-[20] cursor-pointer">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="h-5 w-5 text-gray-600"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          strokeWidth={2}
+                      <div>
+                        <Suspense
+                          fallback={
+                            <div className="bg-gray-300 rounded-lg animate-pulse w-full h-full" />
+                          }
                         >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M6 18L18 6M6 6l12 12"
+                          <YouTubeEmbed
+                            videoid={selectedMovie.youtubeVideoKey}
+                            params="controls=0"
                           />
-                        </svg>
-                      </DialogClose>
-                      <div className="">
-                        <LiteYoutube videoid={selectedMovie.youtubeVideoKey} />
+                        </Suspense>
                       </div>
                     </DialogContent>
                   </Dialog>
                 )}
-              </div> */}
+              </div>
             </div>
           </article>
         </section>
