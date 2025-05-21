@@ -240,12 +240,11 @@ export default function MovieOptions({
                       <div>
                         <Suspense
                           fallback={
-                            <div className="bg-gray-300 rounded-lg animate-pulse w-full h-full" />
+                            <div className="bg-gray-300 rounded-lg animate-pulse w-[300px] h-[150px]" />
                           }
                         >
                           <YouTubeEmbed
                             videoid={selectedMovie.youtubeVideoKey}
-                            params="controls=0"
                           />
                         </Suspense>
                       </div>
