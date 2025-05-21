@@ -6,7 +6,7 @@
     <br />
     <em>“Elegir qué ver ya no será una discusión, será una experiencia compartida.”</em>
   </p>
-  <a href="https://www.google.com"> Prueba MovieMatch </a>
+  <a href="https://movie-match-olive.vercel.app/"> Prueba MovieMatch </a>
 </div>
 
 <!-- TABLE OF CONTENTS -->
